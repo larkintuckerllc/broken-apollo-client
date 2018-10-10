@@ -7,7 +7,7 @@ const Todos =  () => (
   <Query query={GET_TODOS}>
     {({ data: { allTodos = [] } = {}, error, loading }) => (
       <TodosView
-        error={error}
+        error={error !== undefined}
         loading={loading}
         todos={allTodos} />
     )}

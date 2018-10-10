@@ -14,11 +14,18 @@ class CreateTodoView extends Component {
   };
 
   render() {
+    const { error, loading } = this.props;
     return (
       <div>
+        {error && <div>Error</div>}
         <form onSubmit={this.handleSubmit}>
           <input ref={node => { this.inputEl = node; }} />
-          <button type="submit">Create Todo</button>
+          <button
+            type="submit"
+            disabled={loading}
+          >
+            Create Todo
+          </button>
         </form>
       </div>
     );
@@ -26,7 +33,9 @@ class CreateTodoView extends Component {
 }
 
 CreateTodoView.propTypes = {
+  error: PropTypes.bool.isRequired,
   createTodo: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default CreateTodoView;

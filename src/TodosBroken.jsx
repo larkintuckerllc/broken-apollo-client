@@ -12,6 +12,7 @@ export default class TodosBroken extends Component {
 
   async componentDidMount() {
     try {
+      // WOULD NEED TO REPLACE WITH watchQuery
       const result = await client.query({
         query: GET_TODOS,
       });

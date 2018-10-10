@@ -12,9 +12,16 @@ const CreateTodo = () => (
         query: GET_TODOS,
         data: { allTodos: allTodos.concat([createTodo]) }
       });
+      window.alert('SUCCESS'); // SHOULD BE SOME GLOBAL STATE
     }}
   >
-    {createTodo => (<CreateTodoView createTodo={createTodo} />)}
+    {(createTodo, { loading, error }) => (
+      <CreateTodoView
+        createTodo={createTodo}
+        error={error !== undefined}
+        loading={loading}
+      />
+    )}
   </Mutation>
 );
 

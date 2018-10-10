@@ -16,9 +16,9 @@ const TodosView = ({ error, loading, todos }) => {
 };
 
 TodosView.propTypes = {
-  error: PropTypes.bool,
-  loading: PropTypes.bool,
-  todos: PropTypes.array,
+  error: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+  todos: PropTypes.array.isRequired,
 };
 
 export default TodosView;
