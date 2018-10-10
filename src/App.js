@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import CreateTodo from './CreateTodo';
+import Todos from './Todos';
+import TodosBroken from './TodosBroken';
 
 class App extends Component {
   render() {
@@ -19,6 +22,12 @@ class App extends Component {
           >
             Learn React
           </a>
+          <h1>Create Todo</h1>
+          <CreateTodo />
+          <h1>Todos</h1>
+          <Todos />
+          <h2>Todos Broken</h2>
+          <TodosBroken />
         </header>
       </div>
     );
