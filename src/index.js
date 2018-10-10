@@ -8,36 +8,32 @@ import { ApolloProvider } from 'react-apollo';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
 
 const URI = 'https://fakerql.com/graphql';
+/* eslint-disable-next-line */
 export const client = new ApolloClient({
   link: ApolloLink.from([
     onError(({ graphQLErrors, networkError }) => {
       if (graphQLErrors)
         graphQLErrors.map(({ message, locations, path }) =>
-          console.log(
-            `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-          ),
+          window.console.log(
+            `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+          )
         );
-      if (networkError) console.log(`[Network error]: ${networkError}`);
+      if (networkError) window.console.log(`[Network error]: ${networkError}`);
     }),
     new HttpLink({
       uri: URI,
-      credentials: 'same-origin'
-    })
+      credentials: 'same-origin',
+    }),
   ]),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });
 
 ReactDOM.render(
+  /* eslint-disable-next-line */
   <ApolloProvider client={client}>
     <App />
   </ApolloProvider>,
   document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();

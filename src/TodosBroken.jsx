@@ -20,20 +20,15 @@ export default class TodosBroken extends Component {
         loading: false,
         todos: result.data.allTodos,
       });
-    } catch(err) {
+    } catch (err) {
       this.setState({
         error: true,
       });
     }
   }
+
   render() {
     const { error, loading, todos } = this.state;
-    return (
-      <TodosView
-        error={error}
-        loading={loading}
-        todos={todos}
-      />
-    );
+    return <TodosView error={error} loading={loading} todos={todos} />;
   }
 }

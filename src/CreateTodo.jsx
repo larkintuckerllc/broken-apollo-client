@@ -7,7 +7,7 @@ const CreateTodo = () => (
   <Mutation
     mutation={CREATE_TODO}
     update={(cache, { data: { createTodo } }) => {
-      const { allTodos }= cache.readQuery({ query: GET_TODOS });
+      const { allTodos } = cache.readQuery({ query: GET_TODOS });
       cache.writeQuery({
         query: GET_TODOS,
         data: { allTodos: allTodos.concat([createTodo]) }
