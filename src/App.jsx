@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import CreateTodo from './CreateTodo';
+import CreateTodoForm from './CreateTodoForm';
 import Todos from './Todos';
 import TodosBroken from './TodosBroken';
 
@@ -23,7 +23,7 @@ const App = () => (
         Learn React
       </a>
       <h1>Create Todo</h1>
-      <CreateTodo />
+      <CreateTodoForm />
       <h1>Todos</h1>
       <Todos />
       <h2>Todos Broken</h2>

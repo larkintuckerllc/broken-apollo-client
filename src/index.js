@@ -5,7 +5,10 @@ import { onError } from 'apollo-link-error';
 import { ApolloLink } from 'apollo-link';
 import React from 'react';
 import { ApolloProvider } from 'react-apollo';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
+import { createStore, combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 import './index.css';
 import App from './App';
 
@@ -30,10 +33,19 @@ export const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const rootReducer = combineReducers({
+  form: formReducer,
+});
+
+const store = createStore(rootReducer);
+window.console.log(store); // RID OF
+
 ReactDOM.render(
   /* eslint-disable-next-line */
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
+  <Provider store={store}>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </Provider>,
   document.getElementById('root')
 );
